@@ -1,0 +1,82 @@
+
+<% if @task.user == current_user %>
+
+  <p>
+    <strong>Task name:</strong>
+    <%= @task.task_name %>
+  </p>
+
+  <p>
+    <strong>Due date:</strong>
+    <%= @task.due_date %>
+  </p>
+
+  <p>
+    <strong>Status:</strong>
+    <% if @task.status? %>
+      Completed
+    <% else %>
+      Not-Completed
+    <% end %>
+  </p>
+
+  <p>
+    <strong>Created On :</strong>
+    <%= @task.created_at.to_s[0,9] %> 
+  </p>
+  
+  <p>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <strong>Comments :</strong>
+          <%= render partial: 'comments/form', locals: { task: @task } %>
+         
+        </div>
+        <div class="col-sm-6">
+          <strong>Documents :</strong>
+          
+            <%= @task.image %>
+         
+        </div>
+      </div>
+
+      <hr >
+
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="divTable unstyledTable">
+            <div class="divTableHeading">
+              <div class="divTableRow">
+                
+              </div>
+            </div>
+
+          <div class="divTableBody">
+            <% @task.comments.each do |comment| %>
+              <%= content_tag :div, class: 'divTableRow', id: dom_id(comment) do %>  
+                <%= render comment %> 
+              <% end %>
+            <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          
+
+          
+        </div>
+      </div>
+
+    </div>
+    
+  </p>
+
+
+  <%= link_to 'Back', tasks_path, class:"btn btn-outline-info btn-sm" %>
+
+  <br/>
+
+
+<% end %>

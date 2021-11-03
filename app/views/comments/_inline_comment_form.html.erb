@@ -1,0 +1,13 @@
+<%= form_with model: comment, class: 'divTableRow', id: dom_id(comment, 'inline_comment_form'), local: false  do |form| %>
+
+
+    <div class="divTableCell">
+        <%= form.text_field :content, class:"form-control" %>
+    </div>
+
+    <div class="divTableCell">
+        <%= form.submit "Update Task", class:"btn btn-outline-primary btn-sm" %>
+        <%= link_to 'Cancel', class:"btn btn-outline-warning btn-sm" %>
+    </div>
+
+<% end %>

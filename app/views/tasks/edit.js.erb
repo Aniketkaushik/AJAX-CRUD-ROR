@@ -1,0 +1,6 @@
+
+
+
+
+document.getElementById('<%= dom_id(@task) %>').insertAdjacentHTML('afterend', "<%= j render 'inline_form', task: @task %>")
+document.getElementById('<%= dom_id(@task) %>').style.display = 'none'

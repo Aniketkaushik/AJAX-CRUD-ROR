@@ -1,0 +1,83 @@
+<%= form_with(model: task, local: false) do |form| %>
+  <% if task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+        <% task.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+      <h4><%= form.label :task_name, class:"label label-default" %></h4>
+      <%= form.text_field :task_name, class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <h3><%= form.label :due_date %></h3>
+    <h4>
+      <span class= "fa fa-calendar my-2 px-1 text-primary"></span> 
+      <%= form.date_field :due_date %>
+    </h4>
+  </div>
+
+  <div class="field">
+    <h4><%= form.label :status %></h4>
+    <h4><%= form.check_box :status, class:"form-check-input" %></h4>
+  </div>
+
+  <div class="field">
+    <h4><%= form.number_field :user_id, id: :task_user_id, value: current_user.id, class:"form-control", type: :hidden %></h4>
+  </div>
+
+
+  <div class="field">
+    <%= form.submit "Add Task", class:"btn btn-outline-primary btn-sm" %>
+    <%= link_to 'Cancel', root_path, class:"btn btn-outline-warning btn-sm" %>
+  </div>
+
+
+<% end %>
+
+<script>
+    window.onload = function () {
+    bootlint.showLintReportForCurrentDocument([], {
+        hasProblems: false,
+        problemFree: false
+    });
+
+    $('[data-toggle="tooltip"]').tooltip();
+
+    function formatDate(date) {
+        return (
+            date.getDate() +
+            "/" +
+            (date.getMonth() + 1) +
+            "/" +
+            date.getFullYear()
+        );
+    }
+
+    var currentDate = formatDate(new Date());
+
+    $(".due-date-button").datepicker({
+        format: "dd/mm/yyyy",
+        autoclose: true,
+        todayHighlight: true,
+        startDate: currentDate,
+        orientation: "bottom right"
+    });
+
+    $(".due-date-button").on("click", function (event) {
+        $(".due-date-button")
+            .datepicker("show")
+            .on("changeDate", function (dateChangeEvent) {
+                $(".due-date-button").datepicker("hide");
+                $(".due-date-label").text(formatDate(dateChangeEvent.date));
+            });
+    });
+    };
+</script>

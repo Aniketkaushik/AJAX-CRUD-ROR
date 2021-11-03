@@ -1,0 +1,57 @@
+<% if user_signed_in? %>
+
+  <br />
+
+  <div id="new-task"> 
+
+      <%= link_to 'New Task', new_task_path, remote: true, class:"btn btn-outline-primary btn-sm" %>
+
+  </div>
+
+  <br />
+
+  <div class="text-center">
+    <h1>Tasks</h1>
+  </div>
+
+  <div id="table_detail">
+
+    <div class="divTable unstyledTable">
+
+      <div class="divTableHeading">
+        <div class="divTableRow">
+          <div class="divTableHead">Task name </div>
+          <div class="divTableHead">Due date </div>
+          <div class="divTableHead">Status </div>
+          <div class="divTableHead"></div>
+          <div class="divTableHead"></div>
+        </div>
+      </div>
+
+      <div class="divTableBody">
+
+        <% @tasks.each do |task| %>
+          <% if task.user == current_user %>
+          
+              <%= content_tag :div, class: 'divTableRow', id: dom_id(task) do %>
+                <%= render task %>  
+              <% end %>  
+        
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <br/>
+
+<% else %>
+  
+  <br />
+  <h1  class="text-center" > Hello! Welcome to Task Managment App </h1>      
+  <br />      
+
+<% end %>
+
+
+

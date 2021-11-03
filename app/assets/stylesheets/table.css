@@ -1,0 +1,39 @@
+
+
+div.unstyledTable {
+    border: 1px solid #000000;
+    background-color: #FFFFFF;
+    width: 100%;
+    height: px;
+    text-align: left;
+  }
+  .divTable.unstyledTable .divTableCell, .divTable.unstyledTable .divTableHead {
+    border: 1px solid #AAAAAA;
+    padding: 3px 2px;
+  }
+  .divTable.unstyledTable .divTableBody .divTableCell {
+    font-size: 18px;
+  }
+  .divTable.unstyledTable .divTableHeading {
+    background: #DDDDDD;
+    border-bottom: 2px solid #444444;
+  }
+  .divTable.unstyledTable .divTableHeading .divTableHead {
+    font-size: 15px;
+    font-weight: normal;
+    color: #FFFFFF;
+    text-align: left;
+    border-left: 2px solid #D0E4F5;
+  }
+  .divTable.unstyledTable .divTableHeading .divTableHead:first-child {
+    border-left: none;
+  }
+  
+  /* DivTable.com */
+  .divTable{ display: table; }
+  .divTableRow { display: table-row; }
+  .divTableHeading { display: table-header-group;}
+  .divTableCell, .divTableHead { display: table-cell;}
+  .divTableHeading { display: table-header-group;}
+  .divTableFoot { display: table-footer-group;}
+  .divTableBody { display: table-row-group;}
